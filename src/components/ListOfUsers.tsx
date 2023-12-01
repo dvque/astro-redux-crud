@@ -7,112 +7,61 @@ import {
     TableCell,
     TableHead,
     TableHeaderCell,
-    TableBody,
-    BadgeDelta
+    TableBody
 } from '@tremor/react';
 
-const salesPeople = [
+const users = [
     {
+        id: 1,
         name: "Peter Doe",
-        leads: 45,
-        sales: "1,000,000",
-        quota: "1,200,000",
-        variance: "low",
-        region: "Region A",
-        delta: "overperforming",
-        deltaType: "moderateIncrease",
+        email: "peter-doe@emial.com",
+        github: "peterdoe"
     },
     {
-        name: "Lena Whitehouse",
-        leads: 35,
-        sales: "900,000",
-        quota: "1,000,000",
-        variance: "low",
-        region: "Region B",
-        delta: "average",
-        deltaType: "unchanged",
+        id: 2,
+        name: "John Doe",
+        email: "john-doe@email.com",
+        github: "johndoe"
     },
     {
-        name: "Phil Less",
-        leads: 52,
-        sales: "930,000",
-        quota: "1,000,000",
-        variance: "medium",
-        region: "Region C",
-        delta: "underperforming",
-        deltaType: "moderateDecrease",
+        id: 3,
+        name: "Jane Doe",
+        email: "jane-doe@email.com",
+        github: "janedoe"
     },
     {
-        name: "John Camper",
-        leads: 22,
-        sales: "390,000",
-        quota: "250,000",
-        variance: "low",
-        region: "Region A",
-        delta: "overperforming",
-        deltaType: "increase",
-    },
-    {
-        name: "Max Balmoore",
-        leads: 49,
-        sales: "860,000",
-        quota: "750,000",
-        variance: "low",
-        region: "Region B",
-        delta: "overperforming",
-        deltaType: "increase",
-    },
-    {
-        name: "Peter Moore",
-        leads: 82,
-        sales: "1,460,000",
-        quota: "1,500,000",
-        variance: "low",
-        region: "Region A",
-        delta: "average",
-        deltaType: "unchanged",
-    },
-    {
-        name: "Joe Sachs",
-        leads: 49,
-        sales: "1,230,000",
-        quota: "1,800,000",
-        variance: "medium",
-        region: "Region B",
-        delta: "underperforming",
-        deltaType: "moderateDecrease",
-    },
+        id: 4,
+        name: "Mary Doe",
+        email: "mary-doe@email.com",
+        github: "marydoe"
+    }
 ];
 
-export default function Example(): JSX.Element {
+export default function ListOfUsers(): JSX.Element {
     return (
         <Card>
             <Table>
                 <TableHead>
                     <TableRow>
-                        <TableHeaderCell>Name</TableHeaderCell>
-                        <TableHeaderCell className="text-right">Leads</TableHeaderCell>
-                        <TableHeaderCell className="text-right">Sales ($)</TableHeaderCell>
-                        <TableHeaderCell className="text-right">Quota ($)</TableHeaderCell>
-                        <TableHeaderCell className="text-right">Variance</TableHeaderCell>
-                        <TableHeaderCell className="text-right">Region</TableHeaderCell>
-                        <TableHeaderCell className="text-right">Status</TableHeaderCell>
+                        <TableHeaderCell>Id</TableHeaderCell>
+                        <TableHeaderCell>Nombre</TableHeaderCell>
+                        <TableHeaderCell>Email</TableHeaderCell>
+                        <TableHeaderCell>Acciones</TableHeaderCell>
                     </TableRow>
                 </TableHead>
                 <TableBody>
-                    {salesPeople.map((item) => (
+                    {users.map((item) => (
                         <TableRow key={item.name}>
-                            <TableCell>{item.name}</TableCell>
-                            <TableCell className="text-right">{item.leads}</TableCell>
-                            <TableCell className="text-right">{item.sales}</TableCell>
-                            <TableCell className="text-right">{item.quota}</TableCell>
-                            <TableCell className="text-right">{item.variance}</TableCell>
-                            <TableCell className="text-right">{item.region}</TableCell>
-                            <TableCell className="text-right">
-                                <BadgeDelta deltaType={item.deltaType} size="xs">
-                                    {item.delta}
-                                </BadgeDelta>
+                            <TableCell>{item.id}</TableCell>
+                            <TableCell className='flex items-center'>
+                                <img src={`https://unavatar.io/github/${item.github}`}
+                                    alt={item.name}
+                                    className="w-8 h-8 rounded-full mr-4"
+                                ></img>
+                                {item.name}
                             </TableCell>
+                            <TableCell>{item.email}</TableCell>
+                            <TableCell>Acciones</TableCell>
                         </TableRow>
                     ))}
                 </TableBody>
