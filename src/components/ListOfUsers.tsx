@@ -37,35 +37,38 @@ const users = [
     }
 ];
 
-export default function ListOfUsers(): JSX.Element {
+export function ListOfUsers(): JSX.Element {
     return (
-        <Card>
-            <Table>
-                <TableHead>
-                    <TableRow>
-                        <TableHeaderCell>Id</TableHeaderCell>
-                        <TableHeaderCell>Nombre</TableHeaderCell>
-                        <TableHeaderCell>Email</TableHeaderCell>
-                        <TableHeaderCell>Acciones</TableHeaderCell>
-                    </TableRow>
-                </TableHead>
-                <TableBody>
-                    {users.map((item) => (
-                        <TableRow key={item.name}>
-                            <TableCell>{item.id}</TableCell>
-                            <TableCell className='flex items-center'>
-                                <img src={`https://unavatar.io/github/${item.github}`}
-                                    alt={item.name}
-                                    className="w-8 h-8 rounded-full mr-4"
-                                ></img>
-                                {item.name}
-                            </TableCell>
-                            <TableCell>{item.email}</TableCell>
-                            <TableCell>Acciones</TableCell>
+        <div className="mx-10 mt-10">
+            <Card>
+                <Table>
+                    <TableHead>
+                        <TableRow>
+                            <TableHeaderCell>Id</TableHeaderCell>
+                            <TableHeaderCell>Nombre</TableHeaderCell>
+                            <TableHeaderCell>Email</TableHeaderCell>
+                            <TableHeaderCell>Acciones</TableHeaderCell>
                         </TableRow>
-                    ))}
-                </TableBody>
-            </Table>
-        </Card>
+                    </TableHead>
+                    <TableBody>
+                        {users.map((item) => (
+                            <TableRow key={item.name}>
+                                <TableCell>{item.id}</TableCell>
+                                <TableCell className='flex items-center'>
+                                    <img src={`https://unavatar.io/github/${item.github}`}
+                                        alt={item.name}
+                                        className="w-8 h-8 rounded-full mr-4"
+                                    ></img>
+                                    {item.name}
+                                </TableCell>
+                                <TableCell>{item.email}</TableCell>
+                                <TableCell>Acciones</TableCell>
+                            </TableRow>
+                        ))}
+                    </TableBody>
+                </Table>
+            </Card>
+        </div>
+
     );
 }

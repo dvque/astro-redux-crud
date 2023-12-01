@@ -1,6 +1,5 @@
 ---
-import ListOfUsers from "../components/ListOfUsers";
-import "tailwindcss/tailwind.css";
+import { ListOfUsers } from "../components/ListOfUsers";
 
 interface Props {
 	title: string;
@@ -19,9 +18,8 @@ const { title } = Astro.props;
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
 	</head>
-	<body>
-		<h1>{title}</h1>
-		<p>Generated with Astro</p>
+	<div>
 		<ListOfUsers client:load />
-	</body>
+	</div>
+
 </html>
