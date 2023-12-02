@@ -1,4 +1,5 @@
 import React from 'react'
+import { useSelector } from 'react-redux';
 
 import {
     Card,
@@ -12,34 +13,8 @@ import {
     Badge
 } from '@tremor/react';
 
-const users = [
-    {
-        id: 1,
-        name: "Peter Doe",
-        email: "peter-doe@emial.com",
-        github: "peterdoe"
-    },
-    {
-        id: 2,
-        name: "John Doe",
-        email: "john-doe@email.com",
-        github: "johndoe"
-    },
-    {
-        id: 3,
-        name: "Jane Doe",
-        email: "jane-doe@email.com",
-        github: "janedoe"
-    },
-    {
-        id: 4,
-        name: "Mary Doe",
-        email: "mary-doe@email.com",
-        github: "marydoe"
-    }
-];
-
-export function ListOfUsers(): JSX.Element {
+export default function ListOfUsers(): JSX.Element {
+    const users = useSelector((state) => state.users);
     return (
         <div className="mx-10 mt-10">
             <Card>
