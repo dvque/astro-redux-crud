@@ -1,5 +1,5 @@
 import React from 'react'
-import { useSelector } from 'react-redux';
+import { useAppSelector } from '../hooks/store';
 
 import {
     Card,
@@ -14,7 +14,7 @@ import {
 } from '@tremor/react';
 
 export default function ListOfUsers(): JSX.Element {
-    const users = useSelector((state) => state.users);
+    const users = useAppSelector((state) => state.users);
     return (
         <div className="mx-10 mt-10">
             <Card>
