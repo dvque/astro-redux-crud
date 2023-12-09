@@ -1,5 +1,5 @@
 import React from 'react'
-import { useAppSelector, useAppDispatch } from '../hooks/store';
+import { useAppSelector } from '../../hooks/store';
 import { Card, Table, TableRow, TableCell, TableHead, TableHeaderCell, TableBody, Title, Badge } from '@tremor/react';
 import { useUserActions } from '../hooks/useUserActions';
 
