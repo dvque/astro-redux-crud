@@ -1,18 +1,6 @@
 import { createSlice, type PayloadAction } from '@reduxjs/toolkit';
 
-export type UserId = string
-
-export interface User {
-    name: string;
-    email: string;
-    github: string;
-}
-
-export interface UserState extends User {
-    id: UserId;
-}
-
-const initialState: UserState[] = [
+const defaultState: UserState[] = [
     {
         id: "1",
         name: "Peter Doe",
@@ -37,7 +25,31 @@ const initialState: UserState[] = [
         email: "mary-doe@email.com",
         github: "dvque"
     }
-];;
+];
+
+export type UserId = string
+
+export interface User {
+    name: string;
+    email: string;
+    github: string;
+}
+
+export interface UserState extends User {
+    id: UserId;
+}
+
+// IFIE: Immediately Invoked Function Expression
+const initialState: UserState[] = (() => {
+    if (typeof window !== 'undefined') {
+        const persistedState = localStorage.getItem('reduxState');
+        if (persistedState != null) {
+            return JSON.parse(persistedState).users;
+        }
+    }
+    return defaultState;
+})() as UserState[];
+
 
 export const usersSlice = createSlice({
     name: 'users',
