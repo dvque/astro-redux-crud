@@ -1,12 +1,16 @@
-import { deleteUserById, type UserId } from '../store/slice';
+import { addNewUser, deleteUserById, type User, type UserId } from '../store/slice';
 import { useAppDispatch } from '../../hooks/store';
 
-export const useUserActions = (): { removeUser: (id: UserId) => void } => {
+export const useUserActions = (): { addUser: ({ name, email, github }: User) => void, removeUser: (id: UserId) => void } => {
     const dispatch = useAppDispatch();
+
+    const addUser = ({ name, email, github }: User): void => {
+        dispatch(addNewUser({ name, email, github }));
+    }
 
     const removeUser = (id: UserId): void => {
         dispatch(deleteUserById(id));
     }
 
-    return { removeUser }
-}
+    return { addUser, removeUser }
+} 
