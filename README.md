@@ -21,4 +21,8 @@ For this project, we are using [Heroicons](https://heroicons.com/), a set of fre
 
 To use Heroicons in your project, simply visit their website and browse through the available icons. You can then copy the SVG code and use it in your HTML or CSS files.
 
+## Sonner 
+
+We are also using a component from Sonner npm in this project. Sonner npm provides a collection of reusable UI components that can help you build modern and responsive web applications. To learn more about Sonner npm and explore their available components, you can visit their [official website](https://sonner.emilkowal.ski/).
+
 Happy coding! :)

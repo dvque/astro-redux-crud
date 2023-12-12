@@ -1,17 +1,40 @@
-import { configureStore } from "@reduxjs/toolkit"
+import { configureStore, type Middleware } from "@reduxjs/toolkit"
 import userReducer from "../users/store/slice.ts"
+import { toast } from 'sonner'
 
 // Middleware in Redux is a function that is able to intercept, and act accordingly, our actions before they reach the reducer.
-const persistanceLocalStorageMiddleware = (store: { getState: () => any; }) => (next: (arg0: any) => void) => (action: any) => {
+const persistanceLocalStorageMiddleware: Middleware = (store: { getState: () => any; }) => (next: (arg0: any) => void) => (action: any) => {
     next(action);
     localStorage.setItem('reduxState', JSON.stringify(store.getState()));
+}
+
+const syncWithDatabaseMiddleware: Middleware = (store: { getState: () => any; }) => (next: (arg0: any) => void) => (action: any) => {
+    const { type, payload } = action;
+    next(action);
+
+    // after the action is dispatched
+    if (type === 'users/deleteUserById') {
+        const { id } = payload;
+        void fetch(`https://jsonplaceholder.typicode.com/users/${id}`, {
+            method: 'DELETE',
+        })
+            .then(res => {
+                if (res.ok) toast.success('User deleted successfully');
+                else toast.error('Error deleting user');
+            })
+            .catch(err => {
+                toast.error('Error deleting user');
+                console.error(err);
+            })
+    }
+
 }
 
 export const store = configureStore({
     reducer: {
         users: userReducer,
     },
-    middleware: [persistanceLocalStorageMiddleware]
+    middleware: [persistanceLocalStorageMiddleware, syncWithDatabaseMiddleware]
 });
 
 
