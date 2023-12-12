@@ -1,20 +1,38 @@
-import { Button, Card, TextInput, Title } from '@tremor/react';
-import React from 'react'
+import { Badge, Button, Card, TextInput, Title } from '@tremor/react';
+import React, { useState } from 'react'
 import { useUserActions } from '../hooks/useUserActions'
 import type { User } from '../store/slice';
 
 export default function CreateNewUser(): JSX.Element {
     const { addUser } = useUserActions();
+    const [result, setResult] = useState<'ok' | 'ko' | null>(null);
 
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>): void => {
-        event.preventDefault();
+        event.preventDefault(); // Prevent default form submission
+
+        setResult(null); // Reset result
+
         const { name, email, github } = event.target as typeof event.target & {
             name: { value: string };
             email: { value: string };
             github: { value: string };
         };
-        const newUser: User = { name: name.value, email: email.value, github: github.value };
+
+        // Check if all fields are filled
+        if ((name.value === "") || (email.value === "") || (github.value === "")) {
+            setResult('ko');
+            return;
+        }
+
+        const newUser: User = {
+            name: name.value,
+            email: email.value,
+            github: github.value
+        };
         addUser(newUser);
+
+        setResult('ok');
+        (event.target as HTMLFormElement).reset();
     };
 
     return (
@@ -38,6 +56,10 @@ export default function CreateNewUser(): JSX.Element {
                         <TextInput type="text" id="github" name='github' className="form-control" placeholder='Introduzca su cuenta de Github...' />
                     </div>
                     <Button className="btn btn-primary  mt-10" type='submit'>Crear usuario</Button>
+                    <span>
+                        {result === 'ok' && <Badge color='green'>Usuario creado correctamente</Badge>}
+                        {result === 'ko' && <Badge color='red'>Debe rellenar todos los campos</Badge>}
+                    </span>
                 </form>
             </Card>
         </div>
