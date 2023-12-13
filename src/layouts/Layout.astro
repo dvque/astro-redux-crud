@@ -1,7 +1,5 @@
 ---
 import MyComponent from "../components/MyComponent.tsx";
-import { Provider } from "react-redux";
-import { store } from "../store/index.ts";
 
 interface Props {
 	title: string;
@@ -21,7 +19,6 @@ const { title } = Astro.props;
 		<title>{title}</title>
 	</head>
 	<div>
-		<h1>Astro Redux CRUD</h1>
 		<MyComponent client:load />
 	</div>
 

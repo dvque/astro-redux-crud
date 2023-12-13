@@ -8,6 +8,7 @@ import { Toaster } from 'sonner';
 export default function MyComponent(): JSX.Element {
     return (
         <Provider store={store}>
+            <h1>Astro Redux CRUD</h1>
             <ListOfUsers />
             <CreateNewUser />
             <Toaster richColors />
