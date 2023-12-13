@@ -1,5 +1,4 @@
-import toolkitRaw from '@reduxjs/toolkit';
-const { createSlice } = toolkitRaw;
+import { createSlice } from '@reduxjs/toolkit';
 
 const defaultState: UserState[] = [
     {
