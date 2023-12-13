@@ -1,10 +1,9 @@
-import { type Middleware } from "@reduxjs/toolkit"
-import pkg from '@reduxjs/toolkit';
+import { configureStore, type Middleware } from '@reduxjs/toolkit';
 
 import userReducer, { rollbackUser } from "../users/store/slice.ts"
 import { toast } from 'sonner'
 
-const { configureStore } = pkg;
+
 
 // Middleware in Redux is a function that is able to intercept, and act accordingly, our actions before they reach the reducer.
 const persistanceLocalStorageMiddleware: Middleware = (store: { getState: () => any; }) => (next: (arg0: any) => void) => (action: any) => {
