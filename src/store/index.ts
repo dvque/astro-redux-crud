@@ -1,9 +1,8 @@
 import { type Middleware } from '@reduxjs/toolkit';
 import userReducer, { rollbackUser } from "../users/store/slice.ts"
 import { toast } from 'sonner'
-import pkg from '@reduxjs/toolkit';
-
-const { configureStore } = pkg;
+import * as toolkitRaw from '@reduxjs/toolkit';
+const { configureStore } = ((toolkitRaw as any).default ?? toolkitRaw) as typeof toolkitRaw;
 
 
 
