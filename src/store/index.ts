@@ -1,7 +1,9 @@
-import { configureStore, type Middleware } from '@reduxjs/toolkit';
-
+import { type Middleware } from '@reduxjs/toolkit';
 import userReducer, { rollbackUser } from "../users/store/slice.ts"
 import { toast } from 'sonner'
+import pkg from '@reduxjs/toolkit';
+
+const { configureStore } = pkg;
 
 
 
