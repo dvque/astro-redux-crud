@@ -36,32 +36,31 @@ export default function CreateNewUser(): JSX.Element {
     };
 
     return (
-        <div className="mx-10 mt-10">
-            <Card>
-                <Title className="mb-4">
-                    Crear nuevo usuario
-                </Title>
+        <Card className="h-full">
+            <Title className="mb-4">
+                Crear nuevo usuario
+            </Title>
 
-                <form onSubmit={handleSubmit} className="mb-4">
-                    <div className="form-group  mt-5">
-                        <label htmlFor="name" className='text-white'>Nombre</label>
-                        <TextInput type="text" id="name" name='name' className="form-control" placeholder='Introduzca el nombre completo...' />
-                    </div>
-                    <div className="form-group  mt-5">
-                        <label htmlFor="email" className='text-white'>Email</label>
-                        <TextInput type="text" id="email" name='email' className="form-control" placeholder='Introduzca su dirección de correo electrónico...' />
-                    </div>
-                    <div className="form-group  mt-5">
-                        <label htmlFor="github" className='text-white'>Github</label>
-                        <TextInput type="text" id="github" name='github' className="form-control" placeholder='Introduzca su cuenta de Github...' />
-                    </div>
-                    <Button className="btn btn-primary  mt-10" type='submit'>Crear usuario</Button>
-                    <span>
-                        {result === 'ok' && <Badge color='green'>Usuario creado correctamente</Badge>}
-                        {result === 'ko' && <Badge color='red'>Debe rellenar todos los campos</Badge>}
-                    </span>
-                </form>
-            </Card>
-        </div>
+            <form onSubmit={handleSubmit} className="mb-4">
+                <div className="form-group  mt-5">
+                    <label htmlFor="name" className='text-white'>Nombre</label>
+                    <TextInput type="text" id="name" name='name' className="form-control" placeholder='Introduzca el nombre completo...' />
+                </div>
+                <div className="form-group  mt-5">
+                    <label htmlFor="email" className='text-white'>Email</label>
+                    <TextInput type="text" id="email" name='email' className="form-control" placeholder='Introduzca su dirección de correo electrónico...' />
+                </div>
+                <div className="form-group  mt-5">
+                    <label htmlFor="github" className='text-white'>Github</label>
+                    <TextInput type="text" id="github" name='github' className="form-control" placeholder='Introduzca su cuenta de Github...' />
+                </div>
+                <Button className="btn btn-primary  mt-10" type='submit'>Crear usuario</Button>
+                <span>
+                    {result === 'ok' && <Badge color='green'>Usuario creado correctamente</Badge>}
+                    {result === 'ko' && <Badge color='red'>Debe rellenar todos los campos</Badge>}
+                </span>
+            </form>
+        </Card>
+
     );
 }
