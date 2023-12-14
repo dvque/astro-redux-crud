@@ -19,6 +19,19 @@ const { title } = Astro.props;
 		<title>{title}</title>
 	</head>
 	<div>
+		<header
+			class="bg-gradient-to-r from-indigo-500 from-10% via-sky-500 via-30% to-emerald-500 to-90%"
+		>
+			<h1 class="text-4xl font-bold text-center text-white">
+				{title}
+			</h1>
+			<p
+				class="flex h-10 items-center justify-center px-4 text-sm font-medium text-white sm:px-6 lg:px-8"
+			>
+				Astro + React + Redux + Tailwind CSS + Tremor + Sonner +
+				Heroicons
+			</p>
+		</header>
 		<MyComponent client:load />
 	</div>
 
