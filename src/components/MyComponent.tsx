@@ -3,7 +3,7 @@ import { Provider } from 'react-redux';
 import { store } from '../store/index.ts';
 import ListOfUsers from '../users/components/ListOfUsers.tsx';
 import CreateNewUser from '../users/components/CreateNewUser.tsx';
-import LineChartCustomTooltip from './ReactComponents/LineChartComponent.tsx';
+import LineChartCustomTooltip from '../users/components/LineChartUser.tsx';
 import { Toaster } from 'sonner';
 
 export default function MyComponent(): JSX.Element {

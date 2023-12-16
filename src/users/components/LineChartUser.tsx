@@ -1,30 +1,23 @@
 import { Card, LineChart, Title } from "@tremor/react";
 import React from 'react';
+import { useAppSelector } from "../../hooks/store";
 
 const chartdata = [
     {
-        year: 1970,
+        year: 1,
         "Export Growth Rate": 1
-    },
-    {
-        year: 1971,
-        "Export Growth Rate": 1.25
-    },
-    {
-        year: 1972,
-        "Export Growth Rate": 1.8
-    },
-    {
-        year: 1973,
-        "Export Growth Rate": 2
-    },
-    {
-        year: 1974,
-        "Export Growth Rate": 1.2
     }
+
 ];
 
 const LineChartComponent = (): JSX.Element => {
+
+    const users = useAppSelector((state) => state.users);
+
+    chartdata.push({
+        year: chartdata.length + 1,
+        "Export Growth Rate": users.length
+    })
 
 
     return (

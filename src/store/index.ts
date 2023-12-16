@@ -5,7 +5,6 @@ import * as toolkitRaw from '@reduxjs/toolkit';
 const { configureStore } = ((toolkitRaw as any).default ?? toolkitRaw) as typeof toolkitRaw;
 
 
-
 // Middleware in Redux is a function that is able to intercept, and act accordingly, our actions before they reach the reducer.
 const persistanceLocalStorageMiddleware: Middleware = (store: { getState: () => any; }) => (next: (arg0: any) => void) => (action: any) => {
     next(action);
