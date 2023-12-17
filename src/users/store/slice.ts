@@ -62,6 +62,12 @@ export const usersSlice = createSlice({
             state.push({ ...newUser, id: newId }); // immer
             // return [...state, { ...newUser, id: newId }];
         },
+        editUserById: (state, action: toolkitRaw.PayloadAction<UserState>) => {
+            const user = action.payload;
+            const index = state.findIndex(userInState => user.id === userInState.id);
+            // state[index] = user; // immer
+            console.log('editUserById', index, user);
+        },
         deleteUserById: (state, action: toolkitRaw.PayloadAction<UserId>) => {
             const id = action.payload;
             return state.filter(user => user.id !== id);
@@ -78,4 +84,4 @@ export const usersSlice = createSlice({
 
 export default usersSlice.reducer;
 
-export const { addNewUser, deleteUserById, rollbackUser } = usersSlice.actions;
+export const { addNewUser, editUserById, deleteUserById, rollbackUser } = usersSlice.actions;
