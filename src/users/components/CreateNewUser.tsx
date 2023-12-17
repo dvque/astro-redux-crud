@@ -55,6 +55,7 @@ export default function CreateNewUser(): JSX.Element {
                     <TextInput type="text" id="github" name='github' className="form-control" placeholder='Introduzca su cuenta de Github...' />
                 </div>
                 <Button className="btn btn-primary  mt-10" type='submit'>Crear usuario</Button>
+                <Button className="btn btn-danger mt-10 ml-2" variant="secondary" type='reset'>Cancelar</Button>
                 <span>
                     {result === 'ok' && <Badge color='green'>Usuario creado correctamente</Badge>}
                     {result === 'ko' && <Badge color='red'>Debe rellenar todos los campos</Badge>}

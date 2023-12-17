@@ -56,17 +56,17 @@ export const usersSlice = createSlice({
     name: 'users',
     initialState,
     reducers: {
-        addNewUser: (state, action: PayloadAction<User>) => {
+        addNewUser: (state, action: toolkitRaw.PayloadAction<User>) => {
             const newUser = action.payload;
             const newId = (state.length + 1).toString(); // crypto.randomUUID();
             state.push({ ...newUser, id: newId }); // immer
             // return [...state, { ...newUser, id: newId }];
         },
-        deleteUserById: (state, action: PayloadAction<UserId>) => {
+        deleteUserById: (state, action: toolkitRaw.PayloadAction<UserId>) => {
             const id = action.payload;
             return state.filter(user => user.id !== id);
         },
-        rollbackUser: (state, action: PayloadAction<UserState>) => {
+        rollbackUser: (state, action: toolkitRaw.PayloadAction<UserState>) => {
             const isUserAlreadyDefined = state.some(user => user.id === action.payload.id);
             if (!isUserAlreadyDefined) {
                 state.push(action.payload); // immer
